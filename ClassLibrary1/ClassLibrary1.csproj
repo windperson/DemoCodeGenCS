@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>b4ab42bc-96bc-4384-a29c-91fc13a87ee3</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="codegen_templates\Products.cs">
+      <DependentUpon>quckstart.csx</DependentUpon>
+    </Compile>
+    <Compile Update="codegen_templates\Users.cs">
+      <DependentUpon>quckstart.csx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
