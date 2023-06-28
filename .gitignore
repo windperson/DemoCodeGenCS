@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignore CodeGenCS generated files
+/ClassLibrary1/codegen_templates/Products.cs
+/ConsoleApp1/codegen_templates/Products.cs
+/ConsoleApp1/codegen_templates/Users.cs
+/ClassLibrary1/codegen_templates/Users.cs
