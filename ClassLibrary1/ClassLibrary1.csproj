@@ -4,13 +4,11 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <UserSecretsId>b4ab42bc-96bc-4384-a29c-91fc13a87ee3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CodegenCS.Core" Version="3.3.1" />
     <PackageReference Include="CodegenCS.Runtime" Version="3.1.1" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="7.0.0" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
 
