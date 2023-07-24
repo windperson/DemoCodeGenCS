@@ -2,7 +2,7 @@
 
 This is a test repository for using [CodeGenCS](https://github.com/CodegenCS/CodegenCS) to generate a const value class code.
 
-1. Restore dotnet-codegencs command line:
+1. Restore [dotnet-codegencs command line](https://github.com/CodegenCS/CodegenCS/blob/master/src/Tools/dotnet-codegencs/README.md):
     
     ```
     dotnet tool restore

@@ -12,9 +12,6 @@ namespace ClassLibrary1.codegen_templates
         private static readonly Option<string[]> ConstValueOpt = new("value", description: "The value of the const") { Arity = ArgumentArity.ZeroOrMore };
         private static readonly Command DefineConstCmd = new("defineConst", description: "define constants using the syntax: name=foo1 value=bar1 name=foo2 value=bar2 ...");
 
-        private static readonly Argument<string[]> EnvVarArg = new() { Arity = ArgumentArity.OneOrMore };
-        private static readonly Command ReadEnvVarCmd = new("readEnv", description: "Reads the environment variable(s) and generate const member(s)");
-
         private readonly ParseResult _parseResult;
         private readonly ILogger _logger;
 
@@ -40,12 +37,10 @@ namespace ClassLibrary1.codegen_templates
 
         public static void ConfigureCommand(Command command)
         {
-            ReadEnvVarCmd.AddArgument(EnvVarArg);
             DefineConstCmd.AddOption(ConstNameOpt);
             DefineConstCmd.AddOption(ConstValueOpt);
 
             command.Description = "Generates a public static Class with const string by argument value";
-            command.AddCommand(ReadEnvVarCmd);
             command.AddCommand(DefineConstCmd);
         }
 
@@ -56,14 +51,6 @@ namespace ClassLibrary1.codegen_templates
                 _logger.WriteLineErrorAsync("Parse errors:");
                 throw new AggregateException(_parseResult.Errors.Select(parseError => new Exception(parseError.Message)));
             }
-
-            var envVars = _parseResult.GetValueForArgument(EnvVarArg);
-
-            foreach (var env in envVars)
-            {
-                _logger.WriteLineAsync(ConsoleColor.DarkYellow, env);
-            }
-
 
             var name = _parseResult.GetValueForOption(ConstNameOpt);
             var value = _parseResult.GetValueForOption(ConstValueOpt);
@@ -80,7 +67,7 @@ namespace ClassLibrary1.codegen_templates
             }
             else
             {
-
+                _logger.WriteLineAsync(ConsoleColor.DarkYellow, "No const defined, nothing to generate");
             }
         }
 
